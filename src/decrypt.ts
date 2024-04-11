@@ -2,13 +2,13 @@ import { fileExists } from "./utils";
 import execute from "./spawn";
 
 export interface DecryptSettings {
+  customArguments?: string[];
   /** The path for the encrypted pdf */
   input: string;
   /** The path for the decrypted pdf */
   output?: string;
   /** The password required for decrypting the pdf */
   password?: string;
-  customArguments?: string[];
 }
 
 /**

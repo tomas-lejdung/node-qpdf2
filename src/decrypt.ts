@@ -8,6 +8,7 @@ export interface DecryptSettings {
   output?: string;
   /** The password required for decrypting the pdf */
   password?: string;
+  customArguments?: string[];
 }
 
 /**
@@ -24,6 +25,11 @@ export const decrypt = async (payload: DecryptSettings): Promise<Buffer> => {
   // Password
   if (payload.password) {
     callArguments.push(`--password=${payload.password}`);
+  }
+
+  // Custom arguments
+  if (payload.customArguments) {
+    callArguments.push(...payload.customArguments);
   }
 
   // Input file path
